@@ -1,13 +1,13 @@
 <?php
 
-$host = "localhost";
+$server = "127.0.0.1";
 $user = "root";
-$pass = "";
-$database = "dbpus";
+$password = "";
+$nama_database = "dbpus";
 
-$koneksi = mysqli_connect($host,$user,$pass,$database,3307);
+$db = mysqli_connect($server, $user, $password, $nama_database,3307);
 
-if( !$koneksi ){
+if( !$db ){
     die("Gagal terhubung dengan database: " . mysqli_connect_error());
 }
 

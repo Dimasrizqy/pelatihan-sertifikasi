@@ -28,10 +28,29 @@
 			<td><?php echo $r_tampil_anggota['alamat']; ?></td>
 			<td>
 
-				<div class="tombol-opsi-container"><a href="index.php?p=anggota-edit&id=<?php echo $r_tampil_anggota['idanggota'];?>" class="tombol">Edit</a></div>
-				<div class="tombol-opsi-container"><a href="proses/anggota-hapus.php?id=<?php echo $r_tampil_anggota['idanggota']; ?>" class="tombol">Hapus</a></div>
+			<div class="tombol-opsi-container"><a
+                                href="index.php?p=anggota-edit&id=<?php echo $r_tampil_anggota['idanggota']; ?>"
+                                class="tombol btn-secondary">Edit</a></div>
+                    <div class="tombol-opsi-container"><a
+                                href="#" onclick="hapusAnggota('<?php echo $r_tampil_anggota['idanggota']; ?>')"
+                                class="tombol btn-danger">Hapus</a></div>
 			</td>
 		</tr>
 		<?php } ?>
 	</table>
 </div>
+<script>
+    function hapusAnggota(id) {
+        var r = confirm("Apakah anda yakin akan menghapus data anggota " + id + " ?");
+        if (r == true) {
+            txt = "Data berhasil dihapus";
+
+        } else {
+            txt = "Penghapusan dibatalkan";
+			return false;
+
+        }
+        alert(txt);
+        window.location.href='proses/anggota-hapus.php?id=' +id;
+    }
+</script>

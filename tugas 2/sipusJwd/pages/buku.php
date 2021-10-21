@@ -27,10 +27,24 @@
 			<td><?php echo $r_tampil_buku['pengarang']; ?></td>
 			<td><?php echo $r_tampil_buku['penerbit']; ?></td>
 			<td>
-				<div class="tombol-opsi-container"><a href="index.php?p=buku-edit&id=<?php echo $r_tampil_buku['idbuku'];?>" class="tombol">Edit</a></div>
-				<div class="tombol-opsi-container"><a href="proses/buku-hapus.php?id=<?php echo $r_tampil_buku['idbuku']; ?>" class="tombol">Hapus</a></div>
+			<div class="tombol-opsi-container"><a href="index.php?p=buku-edit&id=<?php echo $r_tampil_buku['idbuku']; ?>"class="tombol btn-secondary">Edit</a></div>
+				<div class="tombol-opsi-container"><ahref="#" onclick="hapusBuku('<?php echo $r_tampil_buku['idbuku']; ?>')"class="tombol btn-danger">Hapus</a>
 			</td>
 		</tr>
 		<?php } ?>
 	</table>
 </div>
+<script>
+    function hapusBuku(id) {
+        var r = confirm("Apakah anda yakin akan menghapus data buku " + id + " ?");
+        if (r == true) {
+            txt = "Data berhasil dihapus";
+
+        } else {
+            alert = "Penghapusan dibatalkan";
+			return false;
+        }
+        alert(txt);
+        window.location.href = 'proses/buku-hapus.php?id=' + id;
+    }
+</script>

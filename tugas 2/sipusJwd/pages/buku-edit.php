@@ -6,27 +6,27 @@
 ?>
 <div id="label-page"><h3>Edit Data Buku</h3></div>
 <div id="content">
-	<form action="proses/buku-edit-proses.php" method="post">
+<form action="proses/buku-edit-proses.php" method="post" onsubmit="return validateEditBook()" name="formEditBuku">
 	<table id="tabel-input">
 		<tr>
-			<td class="label-formulir">ID Buku</td>
-			<td class="isian-formulir"><input type="text" name="id_buku" value="<?php echo $r_tampil_buku['idbuku']; ?>" readonly="readonly" class="isian-formulir isian-formulir-border warna-formulir-disabled"></td>
+		<label for="id_buku" class="form-label">ID Buku</label>
+        <input type="text" class="form-control" id="id_buku" name="id_buku" value="<?php echo $r_tampil_buku['idbuku']; ?>" readonly>
 		</tr>
 		<tr>
-			<td class="label-formulir">Judul Buku</td>
-			<td class="isian-formulir"><input type="text" name="judul_buku" value="<?php echo $r_tampil_buku['judulbuku']; ?>" class="isian-formulir isian-formulir-border"></td>
+		<label for="judul_buku" class="form-label">Judul Buku</label>
+        <input type="text" class="form-control" id="judul_buku" name="judul_buku" value="<?php echo $r_tampil_buku['judulbuku']; ?>">
 		</tr>
 		<tr>
-			<td class="label-formulir">Kategori</td>
-			<td class="isian-formulir"><input type="text" name="kategori" value="<?php echo $r_tampil_buku['kategori']; ?>" class="isian-formulir isian-formulir-border"></td>
+		<label for="kategori" class="form-label">Kategori</label>
+        <input type="text" class="form-control" id="kategori" name="kategori" value="<?php echo $r_tampil_buku['kategori']; ?>">
 		</tr>
 		<tr>
-			<td class="label-formulir">Pengarang</td>
-			<td class="isian-formulir"><input type="text" name="pengarang" value="<?php echo $r_tampil_buku['pengarang']; ?>" class="isian-formulir isian-formulir-border"></td>
+		<label for="pengarang" class="form-label">Pengarang</label>
+        <input type="text" class="form-control" id="pengarang" name="pengarang" value="<?php echo $r_tampil_buku['pengarang']; ?>">
 		</tr>
 		<tr>
-			<td class="label-formulir">Penerbit</td>
-			<td class="isian-formulir"><input type="text" name="penerbit" value="<?php echo $r_tampil_buku['penerbit']; ?>" class="isian-formulir isian-formulir-border"></td>
+		<label for="penerbit" class="form-label">Penerbit</label>
+		<input type="text" class="form-control" id="penerbit" name="penerbit" value="<?php echo $r_tampil_buku['penerbit']; ?>">
 		</tr>
 		<tr>
 			<td class="label-formulir"></td>

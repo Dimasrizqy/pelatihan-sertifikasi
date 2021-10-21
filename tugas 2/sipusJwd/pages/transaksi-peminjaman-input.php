@@ -1,10 +1,18 @@
 <div id="label-page"><h3>Input Transaksi Peminjaman</h3></div>
 <div id="content">
-	<form action="proses/transaksi-peminjaman-input-proses.php" method="post">
+<form action="proses/transaksi-peminjaman-input-proses.php" method="post" onsubmit="return validateBorrow()" name="formBorrow">
 	<table id="tabel-input">
 		<tr>
 			<td class="label-formulir">ID Transaksi</td>
-			<td class="isian-formulir"><input type="text" name="id_transaksi" class="isian-formulir isian-formulir-border"></td>
+			<label for="id_transaksi" class="form-label">ID Transaksi</label>
+                <?php include "koneksi.php";
+                $sql = mysqli_query($db, "select max(idtransaksi) as maxID from tbtransaksi");
+                $data = mysqli_fetch_array($sql);
+
+                $kode = $data['maxID'];
+                $kode++;
+                ?>
+                <input type="text" class="form-control" id="id_transaksi" name="id_transaksi"value="<?php echo $kode; ?>" readonly  >
 		</tr>
 		<tr>
 			<td class="label-formulir">Anggota</td>
@@ -53,3 +61,28 @@
 	</table>
 	</form>
 </div>
+<script>
+    function validateBorrow() {
+        let nama = document.forms["formBorrow"]["id_anggota"].value;
+        if (nama === "") {
+            alert("Nama anggota tidak boleh kosong");
+            return false;
+        }
+        return true;
+
+        let buku = document.forms["formBorrow"]["id_buku"].value;
+        if (buku === "") {
+            alert("Kategori tidak boleh kosong");
+            return false;
+        }
+        return true;
+
+        let pinjam = document.forms["formBorrow"]["tgl_pinjam"].value;
+        if (pinjam === "") {
+            alert("Mohon isi tanggal pinjam");
+            return false;
+        }
+        return true;
+
+    }
+</script>

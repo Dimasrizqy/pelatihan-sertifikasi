@@ -5,32 +5,44 @@
 ?>
 <div id="label-page"><h3>Edit Data Anggota</h3></div>
 <div id="content">
-	<form action="proses/anggota-edit-proses.php" method="POST">
+<form action="proses/anggota-edit-proses.php" onsubmit="return validateMember()" method="post" name="formEditAnggota">
 	<table id="tabel-input">
 		<tr>
-			<td class="label-formulir">ID Anggota</td>
-			<td class="isian-formulir"><input type="text" name="id_anggota" value="<?php echo $r_tampil_anggota['idanggota']; ?>" readonly="readonly" class="isian-formulir isian-formulir-border warna-formulir-disabled"></td>
+				<label for="id_anggota" class="form-label">ID Anggota</label>
+                <input type="text" class="form-control" id="id_anggota" name="id_anggota" value="<?php echo $r_tampil_anggota['idanggota']; ?>" readonly>
 		</tr>
 		<tr>
-			<td class="label-formulir">Nama</td>
-			<td class="isian-formulir"><input type="text" name="nama" value="<?php echo $r_tampil_anggota['nama']; ?>" class="isian-formulir isian-formulir-border"></td>
+				<label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $r_tampil_anggota['nama']; ?>" >
+		</tr>
+		
+		<tr>
+				<label for="Jenis Kelamin" class="form-label">Jenis Kelamin</label>
+                <select name="jenis_kelamin" class="form-select" >
+                    <option value="<?php echo $r_tampil_anggota['jeniskelamin']; ?>" select="selected"><?php echo $r_tampil_anggota['jeniskelamin']; ?></option>
+                    <option value="Pria">Pria</option>
+                    <option value="Wanita">Wanita</option>
+                </select>
 		</tr>
 		<tr>
-			<td class="label-formulir">Nama 2</td>
-			<td class="isian-formulir"><input type="text" name="name" value="" class="isian-formulir isian-formulir-border"></td>
-		</tr>
-		<tr>
-			<td class="label-formulir">Jenis Kelamin</td>
-			<td class="isian-formulir"><input type="text" name="jenis_kelamin" value="<?php echo $r_tampil_anggota['jeniskelamin']; ?>" class="isian-formulir isian-formulir-border"></td>
-		</tr>
-		<tr>
-			<td class="label-formulir">Alamat</td>
-			<td class="isian-formulir"><textarea rows="2" cols="40" name="alamat" class="isian-formulir isian-formulir-border"><?php echo $r_tampil_anggota['alamat']; ?></textarea></td>
+				<label for="alamat" class="form-label">Alamat</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $r_tampil_anggota['alamat']; ?>">
 		</tr>
 		<tr>
 			<td class="label-formulir"></td>
-			<td class="isian-formulir"><input type="submit" name="simpan" value="Simpan" id="tombol-simpan"></td>
+			<input type="submit" name="simpan" value="Simpan" class="btn btn-success">
 		</tr>
 	</table>
 	</form>
 </div>
+<script>
+
+    function validateMember() {
+        let nama = document.forms["formEditAnggota"]["nama"].value;
+        if (nama === "") {
+            alert("Nama tidak boleh kosong");
+            return false;
+        }
+        return true;
+    }
+</script>
